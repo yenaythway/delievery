@@ -15,7 +15,7 @@ def receive():
                 shop_price=client.recv(1024).decode('ascii')
                 shop_price = shop_price.split(',')
                 shop_price.remove("")
-
+                user.add_to_cart(shop_price,ordered_food)
                 # shop_name_price=user.chose_shop(shop_price)
 
 
