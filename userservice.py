@@ -22,15 +22,29 @@ class UserService():
             for i in range(0, len(shop_price), 2):
                 if shop_name == shop_price[i]:
                     qty = int(input("Enter qty : "))
-                    amount = qty * shop_price[i + 1]
-                    while True:
-                        user_money = int(input(f"Enter ${amount} for {qty}: "))
-                        if user_money == amount:
-                            s_name_money = f'{shop_name},{user_money},'
-                            return s_name_money
-                        print("Invalid amount")
+
+                    price_qty=f"{shop_price[i+1]}/{qty}"
+                    return price_qty
+                    # amount = qty * shop_price[i + 1]
+                    # while True:
+                    #     user_money = int(input(f"Enter ${amount} for {qty}: "))
+                    #     if user_money == amount:
+                    #         s_name_money = f'{shop_name},{user_money},'
+                    #         return s_name_money
+                    #     print("Invalid amount")
             print("Invalid shop nmae")
-    def add_to_cart(self,shop_price):
+    def take_bill(self):
+        print("###########Cash Receipt#############\n"
+              f"    Customer name : {'name'}\n"
+              f"    Address       : {'address'}\n"
+              f"    Phone Number  : {'phno'}\n"
+              f"\n####################################\n"
+              f"Product name    Price   Qty   Amount"
+              )
+        # for i in range(10):
+        #     print(f"{product name}{price}{qty}{amount}")
+        # print(cart)
+    def add_to_cart(self,shop_price,oredered_food):#######
         cart = ''
         while True:
             user_shop_price = self.chose_shop(shop_price)
@@ -40,8 +54,8 @@ class UserService():
                 continue
 
             elif op == '2':
-                print("###########Bill##########")
                 print(cart)
+                UserService.take_bill(cart)
                 return 0
 
             print("Invalid")
@@ -52,4 +66,4 @@ class UserService():
 obj=UserService()
 # obj.option(["BBQ", "Ar Pu Shr Pu", "Salad", "Fried chicken", "Mr lr shan kw", "Salad", "Hot Dog"])
 # obj.chose_shop(['May Khant Kaw', '$12', 'Shwe Nay Chi', '$12'])
-obj.add_to_cart(['May Khant Kaw', 12, 'Shwe Nay Chi', 12])
+obj.add_to_cart(['May Khant Kaw', 12, 'Shwe Nay Chi', 12],'HOT DOG')
